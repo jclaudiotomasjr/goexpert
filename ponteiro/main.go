@@ -2,16 +2,16 @@ package main
 
 import "fmt"
 
+func soma(a, b *int) int {
+	*a = 14
+	*b = 3
+	return *a + *b
+}
+
 func main() {
-	a := 9
-	fmt.Println(a)
+	a, b := 8, 9
 
-	b := &a
-
-	fmt.Println(b)
-
-	*b = 8
-
-	fmt.Println(a)
+	fmt.Println(soma(&a, &b))
+	println(a, b)
 
 }
