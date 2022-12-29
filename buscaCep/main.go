@@ -46,7 +46,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Erro ao fazer parse da resposta: %v\n", err)
 			return
 		}
-		fmt.Println(data)
+		//fmt.Println(data)
 
 		file, err := os.Create("cep.txt")
 		if err != nil {
@@ -54,7 +54,9 @@ func main() {
 			return
 		}
 		defer file.Close()
-		_, err = file.WriteString(fmt.Sprintf("CEP: %s,\nLocalidade: %s, \nUF: %s, \n ", data.Cep, data.Localidade, data.Uf))
+		_, err = file.WriteString(fmt.Sprintf("CEP: %s, \nRua: %s,\nBairro: %s,\nLocalidade: %s, \nUF: %s \n ", data.Cep, data.Logradouro, data.Bairro, data.Localidade, data.Uf))
+
+		fmt.Println("Arquivo criado com sucesso para o CEP:", cep)
 
 	}
 

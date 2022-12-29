@@ -1,4 +1,6 @@
-CEP: 20720-010,
+CEP: 20720-000, 
+Rua: Rua Barão de Santo Ângelo,
+Bairro: Engenho de Dentro,
 Localidade: Rio de Janeiro, 
-UF: RJ, 
+UF: RJ 
  
