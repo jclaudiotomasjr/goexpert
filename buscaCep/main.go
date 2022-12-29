@@ -26,7 +26,7 @@ type BuscaCep struct {
 func main() {
 
 	for _, cep := range os.Args[1:] {
-		req, err := http.Get(cep)
+		req, err := http.Get("http://viacep.com.br/ws/" + cep + "/json/")
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Erro ao fazer requisição: %v\n", err)
 			return
@@ -47,6 +47,15 @@ func main() {
 			return
 		}
 		fmt.Println(data)
+
+		file, err := os.Create("cep.txt")
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Erro ao criar arquivo: %s", err)
+			return
+		}
+		defer file.Close()
+		_, err = file.WriteString(fmt.Sprintf("CEP: %s,\nLocalidade: %s, \nUF: %s, \n ", data.Cep, data.Localidade, data.Uf))
+
 	}
 
 }
